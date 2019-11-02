@@ -1,15 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-class Comment(models.Model):
-    user = models.ForeignKey(User)
-    item = models.ForeignKey(Item)
-
-    date = models.DateField(auto_now_add=True)
-    time = models.TimeField(auto_now_add=True)
-
 class Item(models.Model):
-    user = models.ForeignKey(User)
+    class Meta:
+        app_label = 'findmyprecious.app'
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     number = models.CharField(max_length=10)
 
     lost_found = models.BooleanField(default=False)
@@ -25,6 +21,12 @@ class Item(models.Model):
     desc = models.CharField(max_length=1024)
     image = models.ImageField(upload_to='images/items/')
 
-class User(models.Model):
-    name = models.CharField(max_length=30)
-    number = models.CharField(max_length=10)
+class Comment(models.Model):
+    class Meta:
+        app_label = 'findmyprecious.app'
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+
+    date = models.DateField(auto_now_add=True)
+    time = models.TimeField(auto_now_add=True)
+
