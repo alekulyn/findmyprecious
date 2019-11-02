@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth import authenticate, login
 
@@ -9,7 +10,7 @@ from .models import Item
 # Create your views here.
 def index(request):
     template = loader.get_template('index.html')
-    context = {}
+    context = {"G_MAP_API": "IzaSyCUQV1j3kOLztOTQSnBJQmzEND3N1-_y5Q"}
     return HttpResponse(template.render(context, request))
 
 def signup(request):
@@ -19,6 +20,8 @@ def signup(request):
     new_user = User.objects.create_user(username=username, password=password)
     new_user.save()
     return HttpResponse("success")
+
+    return render(request, 'index.html', {'form': form})
 
 def signin(request):
     username = request.POST['user']

@@ -3,6 +3,10 @@ body {
     margin-top: 50px;
 }
 
+#map {
+  height: 800px;
+}
+
 header {
     display: flex;
     position: fixed;
@@ -44,6 +48,7 @@ footer {
     padding: 50px;
 }
 .hero{
+<<<<<<< HEAD
     background-color: orange;
     background-size: cover;
     background-position: center;
@@ -67,3 +72,10 @@ footer {
 
 
 
+=======
+
+    background-image: url('https://images.unsplash.com/photo-1489619547086-641e1c87c3ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1021&q=80');
+    background-size: cover;
+    background-position: center;
+}
+>>>>>>> 3c977d122b0a39fb5e681ba84ce65e036f8b9b39
