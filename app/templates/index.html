@@ -16,6 +16,12 @@
       <img src="https://cdn2.sportngin.com/attachments/photo/2122/4060/70_medium.jpg">
       <nav>
         <ul> <li><a href="#hero">Home</a></li> <li><a href="#about">About</a></li> <li><a href="#contact">Contact</a></li> </ul>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li id="currentuser">Logged in as: anonymous</li>
+        </ul>
       </nav>
     </header>
     <main>
@@ -36,8 +42,9 @@
           <h1>Hi, I'm Boberick the llama.<br> Hey I inserted this here</h1>
         </div>
       </section>
-      <div id="map">
-        <h2>Local Map</h2>
+      <h2>Local Map</h2>
+      <h4 class="getmarkers">Refresh</h4>
+      <div id="map" class="">
         <script>
           var map, infoWindow, marker;
           function initMap() {
@@ -74,13 +81,28 @@
               }
               marker = new google.maps.Marker({position:event.latLng, map:map})});
           } 
+          {center: location, zoom: 6});
+          var marker = new google.maps.Marker(
+            {position: location, map: map});
+}
 
         </script>
         <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUQV1j3kOLztOTQSnBJQmzEND3N1-_y5Q&callback=initMap">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUQV1j3kOLztOTQSnBJQmzEND3N1-_y5Q&callback=initMap">
         </script>
 
 
+      </div>
+      <div>
+        <form>
+          <input type="radio" name="itemtype"> Lost<br>
+          <input type="radio" name="itemtype"> Found<br>
+        </form>
+        Title:
+        <input type="text" id='title'><br>
+        Description:
+        <input type="text" id='desc'><br>
+        <input type="submit" value="Add Pin" id="ap_s">
       </div>
       <section class="contact">
         <div class="section-inner">

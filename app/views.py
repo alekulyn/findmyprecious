@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth import authenticate, login
+import json
 
 from django.contrib.auth.models import User
 from .models import Item
@@ -16,12 +17,10 @@ def index(request):
 def signup(request):
     username = request.POST['user']
     password = request.POST['pass']
-    
+
     new_user = User.objects.create_user(username=username, password=password)
     new_user.save()
     return HttpResponse("success")
-
-    return render(request, 'index.html', {'form': form})
 
 def signin(request):
     username = request.POST['user']
@@ -31,15 +30,14 @@ def signin(request):
 
     if user is not None:
         login(request, user)
-        return HttpResponse("success")
+        return HttpResponse(json.dumps({'status':"success",'name':username}), content_type="application/json")
     else:
-        return HttpResponse("failure")
+        return HttpResponse(json.dumps({'status':"failure"}), content_type="application/json")
 
 def addmarker(request):
-    user = User.object() #Get current user
-    Item.objects.create(user=user, latitude=request.POST['latitude'], longitude=request.POST['longitude'], title=request.POST['title'])
-    pass
+    Item.objects.create(user=request.user, latitude=request.POST['latitude'], longitude=request.POST['longitude'], title=request.POST['title'], desc=request.POST['desc'])
+    return HttpResponse()
 
 def getmarkers(request):
-    context = None
-    pass
+    pins = [(p.User.username, p.latitude, p.longitude, p.title, p.desc, p.found) for p in Item.objects.all()]
+    return HttpResponse(json.dumps({'status':"success",'pins':json.dumps(pins)}), content_type="application/json")

@@ -1,6 +1,4 @@
 $(document).ready(function() {
-	//csrftoken = $.cookie('csrftoken');
-
 	$('#su_s').on('click', function () {
 		var user = $('#su_u').val();
 		var pass = $('#su_p').val();
@@ -31,14 +29,48 @@ $(document).ready(function() {
 				pass: pass
 			},
 			success: function (data) {
-				if (data == "success") {
+				if (data.status == "success") {
 					$('#message').show();
 					$('#message').text('Message: Login successful. Thank you.');
+					$('#currentuser').text('Logged in as: ' + data.name);
 				} else {
 					$('#message').show();
 					$('#message').text('Message: Login failed. Please try again.');
 				}
-				//Data could be success or failure
+			}
+		})
+	});
+	
+	$('#addmarker').on('click', function () {
+		var title = $('#title').val();
+		var desc = $('#desc').val();
+		var lat = marker.position.lat;
+		var lng = marker.position.lng;
+		$.ajax({
+			type:"POST",
+			url: "addmarker",
+			data: {
+				title: title,
+				desc: desc,
+				latitude: lat,
+				longitude: lng
+			},
+			success: function (data) {
+				if (data == "success") {
+					//close form and refresh page
+				}
+			}
+		})
+	});
+	
+	$('.getmarkers').on('click', function () {
+		$.ajax({
+			type:"POST",
+			url: "getmarkers",
+			success: function (data) {
+				if (data.status == "success") {
+					//fetch pins from data.pins and display them
+				}
 			}
 		})
 	});
