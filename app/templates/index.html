@@ -5,40 +5,20 @@
     <title>Lost and Found</title>
 
     <meta name="viewport" content="initial-scale=1.0">
+
     <link rel="stylesheet" href="{% static "app/style.css" %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{% static "app/js.js" %}"></script>
-    {% csrf_token %}
-    <script type="text/javascript">
-      // using jQuery
-      var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-      function csrfSafeMethod(method) {
-        // these HTTP methods do not require CSRF protection
-        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-      }
-      $.ajaxSetup({
-        beforeSend: function(xhr, settings) {
-          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-          }
-        }
-      });
-    </script>
   </head>
 
   <body>
     <header>
       <img src="https://cdn2.sportngin.com/attachments/photo/2122/4060/70_medium.jpg">
       <nav>
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <ul> <li><a href="#hero">Home</a></li> <li><a href="#about">About</a></li> <li><a href="#contact">Contact</a></li> </ul>
       </nav>
     </header>
     <main>
-      <p id="message" style="background: lightblue; display:none">Message: Sample Message</p>
       <h3>Sign up</h3>
       Username:<br>
       <input type="text" id="su_u"><br>
@@ -59,19 +39,45 @@
       <div id="map">
         <h2>Local Map</h2>
         <script>
-          var map;
+          var map, infoWindow, marker;
           function initMap() {
             var location = {lat:-34.397, lng:150.644}
             map = new google.maps.Map(
               document.getElementById('map'),
-              {center: location, zoom: 6});
-            var marker = new google.maps.Marker(
-              {position: location, map: map});
-          }
+              {center: location, zoom: 10});
+            infoWindow = new google.maps.InfoWindow;
+
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('Your Location');
+                infoWindow.open(map);
+                map.setCenter(pos);
+              }, function() {
+                handleLocationError(true, infoWindow, map.getCenter());
+              });
+            } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infoWindow, map.getCenter());
+            }
+            google.maps.event.addListener(map, 'click', function(event) {
+              //call function to create marker
+              if (marker) {
+                marker.setMap(null);
+                marker = null;
+              }
+              marker = new google.maps.Marker({position:event.latLng, map:map})});
+          } 
 
         </script>
         <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUQV1j3kOLztOTQSnBJQmzEND3N1-_y5Q&callback=initMap">
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUQV1j3kOLztOTQSnBJQmzEND3N1-_y5Q&callback=initMap">
         </script>
 
 
