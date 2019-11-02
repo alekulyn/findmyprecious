@@ -1,61 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head>
-	{% load static %}
-        <title>Lost and Found</title>
-	<link rel="stylesheet" href="{% static "app/style.css" %}">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="{% static "app/js.js" %}"></script>
-    </head>
+  <head>
+    {% load static %}
+    <title>Lost and Found</title>
 
-    <body>
-        <header>
-            <img src="https://cdn2.sportngin.com/attachments/photo/2122/4060/70_medium.jpg">
-            <nav>
-                <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-		<h3>Sign up</h3>
-		Username:<br>
-		<input type="text" id="su_u"><br>
-		Password:<br>
-		<input type="password" id="su_p"><br>
-		<input type="submit" value="Submit" id="su_s">
+    <meta name="viewport" content="initial-scale=1.0">
 
-		<h3>Sign in</h3>
-		Username:<br>
-		<input type="text" id="si_u"><br>
-		Password:<br>
-		<input type="password" id="si_p"><br>
-		<input type="submit" value="Submit" id="si_s">
-            <section class="hero">
-                <div class="section-inner">
-                    <h1>Hi, I'm Boberick the llama.<br> Hey I inserted this here</h1>
-                </div>
-            </section>
-            <section class="about">
-                <div class="section-inner">
-                    <h2>About me</h2>
-                    <p>put maps here</p>
+    <link rel="stylesheet" href="{% static "app/style.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{% static "app/js.js" %}"></script>
+  </head>
 
-                </div>
-            </section>
-            <section class="contact">
-                <div class="section-inner">
-                    <h2>Contact me</h2>
-                    <p>You can find me on:</p>
-                    <p> Put whatever you guys like here
-                    </p>
-                </div>
-            </section>
-        </main>
-        <footer>
-            © Copyright flipping A, 2019
-        </footer>
-    </body>
+  <body>
+    <header>
+      <img src="https://cdn2.sportngin.com/attachments/photo/2122/4060/70_medium.jpg">
+      <nav>
+        <ul> <li><a href="#hero">Home</a></li> <li><a href="#about">About</a></li> <li><a href="#contact">Contact</a></li> </ul>
+      </nav>
+    </header>
+    <main>
+      <h3>Sign up</h3>
+      Username:<br>
+      <input type="text" id="su_u"><br>
+      Password:<br>
+      <input type="password" id="su_p"><br>
+      <input type="submit" value="Submit" id="su_s">
+      <h3>Sign in</h3>
+      Username:<br>
+      <input type="text" id="si_u"><br>
+      Password:<br>
+      <input type="password" id="si_p"><br>
+      <input type="submit" value="Submit" id="si_s">
+      <section class="hero">
+        <div class="section-inner">
+          <h1>Hi, I'm Boberick the llama.<br> Hey I inserted this here</h1>
+        </div>
+      </section>
+      <div id="map">
+        <h2>Local Map</h2>
+        <script>
+          var map;
+          function initMap() {
+            var location = {lat:-34.397, lng:150.644}
+            map = new google.maps.Map(
+              document.getElementById('map'),
+              {center: location, zoom: 6});
+            var marker = new google.maps.Marker(
+              {position: location, map: map});
+          }
+
+        </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUQV1j3kOLztOTQSnBJQmzEND3N1-_y5Q&callback=initMap">
+        </script>
+
+
+      </div>
+      <section class="contact">
+        <div class="section-inner">
+          <h2>Contact me</h2>
+          <p>You can find me on:</p>
+          <p> Put whatever you guys like here
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      © Copyright flipping A, 2019
+    </footer>
+  </body>
 </html>

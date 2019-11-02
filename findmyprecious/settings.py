@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'e@(#1(^p^64&3)t)^r0i=l#1%3v%so^vszv3x)x=0r2b63uq8g'
+GOOGLE_MAPS_API_KEY = 'IzaSyCUQV1j3kOLztOTQSnBJQmzEND3N1-_y5Q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_google_maps',
 ]
 
 MIDDLEWARE = [
