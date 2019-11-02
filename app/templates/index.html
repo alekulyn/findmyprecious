@@ -6,6 +6,22 @@
 	<link rel="stylesheet" href="{% static "app/style.css" %}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="{% static "app/js.js" %}"></script>
+	{% csrf_token %}
+	<script type="text/javascript">
+		// using jQuery
+		var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+		function csrfSafeMethod(method) {
+			// these HTTP methods do not require CSRF protection
+			return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+		}
+		$.ajaxSetup({
+			beforeSend: function(xhr, settings) {
+				if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+					xhr.setRequestHeader("X-CSRFToken", csrftoken);
+				}
+		        }
+		});
+	</script>
     </head>
 
     <body>
@@ -20,6 +36,7 @@
             </nav>
         </header>
         <main>
+		<p id="message" style="background: lightblue; display:none">Message: Sample Message</p>
 		<h3>Sign up</h3>
 		Username:<br>
 		<input type="text" id="su_u"><br>
