@@ -11,7 +11,7 @@ header {
     right: 0;
     height: 50px;
     line-height: 50px;
-    background-color: red;
+    background-color: yellow;
 }
 
 header * {
@@ -30,7 +30,6 @@ header li {
 section {
     height: 100vh;
     border: 1px solid black;
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -45,8 +44,26 @@ footer {
     padding: 50px;
 }
 .hero{
- 
-    background-image: url('https://images.unsplash.com/photo-1489619547086-641e1c87c3ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1021&q=80');
+    background-color: orange;
     background-size: cover;
     background-position: center;
 }
+
+
+.signup{
+    float: left;
+    width: 50%;
+    height: 100vh;
+}
+.signin{
+    float: left;
+    width: 50%;
+    height: 100vh;
+}
+
+
+
+
+
+
+
