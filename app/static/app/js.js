@@ -13,7 +13,6 @@ $(document).ready(function() {
 				//data is the success message
 				$('#message').show();
 				$('#message').text('Message: Login created. Now please sign in.');
-				return;
 			}
 		})
 	});
@@ -41,7 +40,7 @@ $(document).ready(function() {
 		})
 	});
 	
-	$('#addmarker').on('click', function () {
+	$('#ap_s').on('click', function () {
 		var title = $('#title').val();
 		var desc = $('#desc').val();
 		var lat = marker.position.lat;
@@ -57,7 +56,8 @@ $(document).ready(function() {
 			},
 			success: function (data) {
 				if (data == "success") {
-					//close form and refresh page
+					//refresh map
+					$('.getmarkers').click();
 				}
 			}
 		})

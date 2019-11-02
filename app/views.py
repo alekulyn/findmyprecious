@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth import authenticate, login
+from django.views.decorators.csrf import csrf_exempt
 import json
 
 from django.contrib.auth.models import User
@@ -34,8 +35,10 @@ def signin(request):
     else:
         return HttpResponse(json.dumps({'status':"failure"}), content_type="application/json")
 
+@csrf_exempt
 def addmarker(request):
-    Item.objects.create(user=request.user, latitude=request.POST['latitude'], longitude=request.POST['longitude'], title=request.POST['title'], desc=request.POST['desc'])
+    item = Item.objects.create(user=request.user, latitude=request.POST['latitude'], longitude=request.POST['longitude'], title=request.POST['title'], desc=request.POST['desc'])
+    item.save()
     return HttpResponse()
 
 def getmarkers(request):
