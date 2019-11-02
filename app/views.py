@@ -42,5 +42,5 @@ def addmarker(request):
     return HttpResponse()
 
 def getmarkers(request):
-    pins = [(p.User.username, p.latitude, p.longitude, p.title, p.desc, p.found) for p in Item.objects.all()]
+    pins = [{'user':p.user.username, 'latitude':p.latitude, 'longitude':p.longitude, 'title':p.title, 'desc':p.desc, 'found':p.found} for p in Item.objects.all()]
     return HttpResponse(json.dumps({'status':"success",'pins':json.dumps(pins)}), content_type="application/json")

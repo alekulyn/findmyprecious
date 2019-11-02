@@ -35,7 +35,7 @@
 		<li><a href="#hero">Home</a></li>
 		<li><a href="#about">About</a></li>
 		<li><a href="#contact">Contact</a></li>
-		<li id="currentuser">Logged in as: anonymous</li>
+		<li id="currentuser">Logged in as: {% if user.is_authenticated %} {{user.username}} {% else %} anonymous {% endif %}</li>
 	</ul>
       </nav>
     </header>
