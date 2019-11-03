@@ -1,7 +1,6 @@
 body {
   margin: 0;
   margin-top: 50px;
-  overflow:hidden;
 }
 
 #map {
@@ -12,7 +11,7 @@ body {
 
 header {
   display: flex;
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -61,6 +60,7 @@ section {
   width: 30%;
   background-color: #74B5BC;
   padding: 20px;
+  margin: 0px;
 }
 
 .signup{
@@ -100,4 +100,13 @@ section {
   font-weight: bold;
   font-size: 30px;
   margin: 0px !important;
+}
+
+.ghost {
+	pointer-events: none;
+	opacity : 0.5;
+}
+
+.tableform {
+	margin: auto;
 }

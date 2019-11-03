@@ -31,6 +31,7 @@ function refresh_map () {
 							}
 							var iw = new google.maps.InfoWindow({
 								content: '<b>Reporter:</b> ' + data.pins[i].user + '<br>' +
+									 '<b>Contact:</b> ' + data.pins[i].email + '<br>' +
 									 '<b>Title:</b> ' + data.pins[i].title + '<br>' +
 									 '<b>Description:</b> ' + data.pins[i].desc + '<br>'
 							});
@@ -51,12 +52,14 @@ $(document).ready(function() {
 	$('#su_s').on('click', function () {
 		var user = $('#su_u').val();
 		var pass = $('#su_p').val();
+		var email = $('#su_e').val();
 		$.ajax({
 			type:"POST",
 			url: "signup",
 			data: {
 				user: user,
-				pass: pass
+				pass: pass,
+				email: email
 			},
 			success: function (data) {
 				//data is the success message
@@ -80,8 +83,8 @@ $(document).ready(function() {
 				if (data.status == "success") {
 					$('#message').show();
 					$('#message').text('Message: Login successful. Thank you.');
-					$('#currentuser').text('Logged in as: ' + data.name);
-					$('.hero').hide();
+					$('#currentuser span').text(data.name);
+					$('#add_pin').removeClass('ghost');
 				} else {
 					$('#message').show();
 					$('#message').text('Message: Login failed. Please try again.');
@@ -97,8 +100,8 @@ $(document).ready(function() {
 			success: function (data) {
 				if (data == "success") {
 					$('#message').text('Message: Logout successful. Thank you.');
-					$('#currentuser').text('Logged in as: guest');
-					$('.hero').show();
+					$('#currentuser span').text('guest');
+					$('#add_pin').addClass('ghost');
 				}
 			}
 		})
@@ -122,14 +125,14 @@ $(document).ready(function() {
 			},
 			success: function (data) {
 				if (data == "success") {
-					//refresh map
-					refresh_map();
 					//clear temporary pin and pin fields
 					marker.setMap(null);
 					marker = null;
 					$('title').val('');
 					$('desc').val('');
 					$('input[name=itemtype]').prop('checked', false);
+					$('#message').text('Message: Pin added successfully.');
+					refresh_map();
 				}
 			}
 		})

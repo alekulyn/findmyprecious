@@ -15,14 +15,17 @@ def index(request):
     context = {"G_MAP_API": "IzaSyCUQV1j3kOLztOTQSnBJQmzEND3N1-_y5Q"}
     return HttpResponse(template.render(context, request))
 
+@csrf_exempt
 def signup(request):
     username = request.POST['user']
     password = request.POST['pass']
+    email = request.POST['email']
 
-    new_user = User.objects.create_user(username=username, password=password)
+    new_user = User.objects.create_user(username=username, password=password, email=email)
     new_user.save()
     return HttpResponse("success")
 
+@csrf_exempt
 def signin(request):
     username = request.POST['user']
     password = request.POST['pass']
@@ -46,6 +49,7 @@ def addmarker(request):
     item.save()
     return HttpResponse("success")
 
+@csrf_exempt
 def getmarkers(request):
-    pins = [{'user':p.user.username, 'latitude':p.latitude, 'longitude':p.longitude, 'title':p.title, 'desc':p.desc, 'found':p.found} for p in Item.objects.all()]
+    pins = [{'user':p.user.username, 'email':p.user.email, 'latitude':p.latitude, 'longitude':p.longitude, 'title':p.title, 'desc':p.desc, 'found':p.found} for p in Item.objects.all()]
     return HttpResponse(json.dumps({'status':"success",'pins':json.dumps(pins)}), content_type="application/json")
