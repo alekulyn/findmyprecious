@@ -67,6 +67,7 @@ $(document).ready(function() {
 				$('#su_e').val('');
 				$('#message').show();
 				$('#message').text('Message: Login created. Now please sign in.');
+				$('#message').fadeOut(4000);
 			}
 		})
 	});
@@ -94,11 +95,13 @@ $(document).ready(function() {
 					$('#si_p').val('');
 					$('#message').show();
 					$('#message').text('Message: Login successful. Thank you.');
+					$('#message').fadeOut(4000);
 					$('#currentuser span').text(data.name);
 					$('#add_pin').removeClass('ghost');
 				} else {
 					$('#message').show();
 					$('#message').text('Message: Login failed. Please try again.');
+					$('#message').fadeOut(4000);
 				}
 			}
 		})
@@ -118,6 +121,7 @@ $(document).ready(function() {
 			success: function (data) {
 				if (data == "success") {
 					$('#message').text('Message: Logout successful. Thank you.');
+					$('#message').fadeOut(4000);
 					$('#currentuser span').text('guest');
 					$('#add_pin').addClass('ghost');
 				}
@@ -146,10 +150,11 @@ $(document).ready(function() {
 					//clear temporary pin and pin fields
 					marker.setMap(null);
 					marker = null;
-					$('title').val('');
-					$('desc').val('');
+					$('#title').val('');
+					$('#desc').val('');
 					$('input[name=itemtype]').prop('checked', false);
 					$('#message').text('Message: Pin added successfully.');
+					$('#message').fadeOut(4000);
 					refresh_map();
 				}
 			}
