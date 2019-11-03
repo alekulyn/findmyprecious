@@ -1,14 +1,14 @@
 body {
     margin: 0;
     margin-top: 50px;
+    overflow:hidden;
 }
 
 #map {
-  height: 700px;
-  width: 700px;
+  height: 605px;
+  width: 70%;
   margin: auto;
-  justify-content: center;
-  align-items: center;
+  z-index: -1 !important;
 }
 
 header {
@@ -17,7 +17,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 50px;
+    height: 8%;
     line-height: 50px;
     color: white;
     background-color: #31261d;
