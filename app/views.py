@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import loader
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 import json
 
@@ -36,10 +36,15 @@ def signin(request):
         return HttpResponse(json.dumps({'status':"failure"}), content_type="application/json")
 
 @csrf_exempt
+def logout_user(request):
+    logout(request)
+    return HttpResponse("success")
+
+@csrf_exempt
 def addmarker(request):
-    item = Item.objects.create(user=request.user, latitude=request.POST['latitude'], longitude=request.POST['longitude'], title=request.POST['title'], desc=request.POST['desc'])
+    item = Item.objects.create(user=request.user, latitude=request.POST['latitude'], longitude=request.POST['longitude'], title=request.POST['title'], desc=request.POST['desc'], found=(request.POST['found'] == 'true'))
     item.save()
-    return HttpResponse()
+    return HttpResponse("success")
 
 def getmarkers(request):
     pins = [{'user':p.user.username, 'latitude':p.latitude, 'longitude':p.longitude, 'title':p.title, 'desc':p.desc, 'found':p.found} for p in Item.objects.all()]

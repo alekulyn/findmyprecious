@@ -35,13 +35,16 @@
 		<li><a href="#hero">Home</a></li>
 		<li><a href="#about">About</a></li>
 		<li><a href="#contact">Contact</a></li>
-		<li id="currentuser">Logged in as: {% if user.is_authenticated %} {{user.username}} {% else %} anonymous {% endif %}</li>
+		<li id="currentuser">Logged in as: {% if user.is_authenticated %} {{user.username}} {% else %} guest {% endif %}</li>
+		<li><a id='logout'>Logout</a></li>
 	</ul>
       </nav>
     </header>
     <main>
 <div class="block">
   <!--
+    <section class="hero" style="{% if user.is_authenticated %}display:none{% endif %}">
+  <div class="section-inner">
   <div class="signup">
           <h3>Sign up</h3>
           Username:<br>
@@ -71,7 +74,7 @@
       <div id="map">
         <h2>Local Map</h2>
         <script>
-          var map, infoWindow, marker;
+          var map, infoWindow = null, marker;
           function initMap() {
             var location = {lat:-34.397, lng:150.644}
             map = new google.maps.Map(
@@ -89,7 +92,7 @@
 
                 infoWindow.setPosition(pos);
                 infoWindow.setContent('Your Location');
-                infoWindow.open(map);
+                //infoWindow.open(map);
                 map.setCenter(pos);
               }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -102,7 +105,10 @@
                 marker.setMap(null);
                 marker = null;
               }
-              marker = new google.maps.Marker({position:event.latLng, map:map})});
+	      if (infoWindow) {
+		infoWindow.close()
+	      }
+              marker = new google.maps.Marker({position:event.latLng, map:map, icon: blue_icon})});
           } 
 
         </script>
