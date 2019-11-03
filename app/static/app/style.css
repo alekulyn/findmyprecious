@@ -1,103 +1,103 @@
 body {
-    margin: 0;
-    margin-top: 50px;
-    overflow:hidden;
+  margin: 0;
+  margin-top: 50px;
+  overflow:hidden;
 }
 
 #map {
   height: 605px;
   width: 70%;
   margin: auto;
-  z-index: -1 !important;
 }
 
 header {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 8%;
-    line-height: 50px;
-    color: white;
-    background-color: #31261d;
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  line-height: 50px;
+  color: white;
+  background-color: #31261d;
+  z-index: 2;
 }
 
 header * {
-    display: inline;
-    height: 50px;
+  display: inline;
+  height: 50px;
 }
 
 header ul {
-    padding: 0;
+  padding: 0;
 }
 
 header li {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 section {
-    height: 60vh;
-    border: 1px solid black;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  height: 60vh;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #hero .profile-img {
-    width: 300px;
+  width: 300px;
 }
 
 .hero{
-    background-color:white;
-    background-size: cover;
-    background-position: center;
+  background-color:white;
+  background-size: cover;
+  background-position: center;
 }
 
 .lostandfound{
-    align-items: center;
-    text-align: center;
-	font-family: 'ZCOOL XiaoWei', serif;
-	width: 30%;
-       	background-color: #74B5BC;
-	padding: 20px;
+  align-items: center;
+  text-align: center;
+  font-family: 'ZCOOL XiaoWei', serif;
+  width: 30%;
+  background-color: #74B5BC;
+  padding: 20px;
 }
 
 .signup{
-    float: right;
-    width: auto;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-right: 3px;
+  float: right;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 3px;
 }
 
 .block {
-    display: flex;
+  display: flex;
 }
 
 .toplink {
-	color: inherit;
-	text-decoration: inherit;
-	font-weight: bold;
-	font-family: Ubuntu;
-	font-size: 20px;
+  color: inherit;
+  text-decoration: inherit;
+  font-weight: bold;
+  font-family: Ubuntu;
+  font-size: 20px;
 }
 .toplink:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 #currentuser {
-	font-weight: normal !important;
-	cursor: default !important;
+  font-weight: normal !important;
+  cursor: default !important;
 }
 #currentuser span {
-	font-weight: bold !important;
+  font-weight: bold !important;
 }
 
 .prompt {
-	font-weight: bold;
-	font-size: 30px;
-	margin: 0px !important;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 0px !important;
 }
