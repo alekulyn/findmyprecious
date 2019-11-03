@@ -41,7 +41,7 @@
       </nav>
     </header>
     <main>
-  <section class="hero">
+    <section class="hero" style="{% if user.is_authenticated %}display:none{% endif %}">
   <div class="section-inner">
   <div class="signup">
           <h3>Sign up</h3>

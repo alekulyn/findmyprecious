@@ -81,6 +81,7 @@ $(document).ready(function() {
 					$('#message').show();
 					$('#message').text('Message: Login successful. Thank you.');
 					$('#currentuser').text('Logged in as: ' + data.name);
+					$('.hero').hide();
 				} else {
 					$('#message').show();
 					$('#message').text('Message: Login failed. Please try again.');
@@ -97,6 +98,7 @@ $(document).ready(function() {
 				if (data == "success") {
 					$('#message').text('Message: Logout successful. Thank you.');
 					$('#currentuser').text('Logged in as: guest');
+					$('.hero').show();
 				}
 			}
 		})
