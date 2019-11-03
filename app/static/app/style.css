@@ -4,10 +4,11 @@ body {
 }
 
 #map {
-  height: 300px;
-  width: 100%;
-  margin: 0;
-  padding:0;
+  height: 700px;
+  width: 700px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 header {
@@ -46,32 +47,36 @@ section {
     width: 300px;
 }
 
-footer {
-    text-align: center;
-    padding: 50px;
-}
 .hero{
-    background-color: #ff4f00;
+    background-color:white;
     background-size: cover;
     background-position: center;
+}
+
+.lostandfound{
+    float: left;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+
 }
 
 
 .signup{
-    float: left;
-    width: 50%;
-    height: 100vh;
+    float: right;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 3px;
 }
-.signin{
-    float: left;
-    width: 50%;
-    height: 100vh;
+
+.block {
+    display: inline-block;
 }
 
 
 
-.   {
-    background-image: 
-    background-size: cover;
-    background-position: center;
-}
+
+
