@@ -19,7 +19,8 @@ header {
     right: 0;
     height: 50px;
     line-height: 50px;
-    background-color: yellow;
+    color: white;
+    background-color: #31261d;
 }
 
 header * {
@@ -54,13 +55,13 @@ section {
 }
 
 .lostandfound{
-    float: left;
-    justify-content: left;
-    align-items: left;
-    text-align: left;
-
+    align-items: center;
+    text-align: center;
+	font-family: 'ZCOOL XiaoWei', serif;
+	width: 30%;
+       	background-color: #74B5BC;
+	padding: 20px;
 }
-
 
 .signup{
     float: right;
@@ -73,10 +74,30 @@ section {
 }
 
 .block {
-    display: inline-block;
+    display: flex;
 }
 
+.toplink {
+	color: inherit;
+	text-decoration: inherit;
+	font-weight: bold;
+	font-family: Ubuntu;
+	font-size: 20px;
+}
+.toplink:hover {
+	cursor: pointer;
+}
 
+#currentuser {
+	font-weight: normal !important;
+	cursor: default !important;
+}
+#currentuser span {
+	font-weight: bold !important;
+}
 
-
-
+.prompt {
+	font-weight: bold;
+	font-size: 30px;
+	margin: 0px !important;
+}
