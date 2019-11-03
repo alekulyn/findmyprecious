@@ -62,11 +62,20 @@ $(document).ready(function() {
 				email: email
 			},
 			success: function (data) {
-				//data is the success message
+				$('#su_u').val('');
+				$('#su_p').val('');
+				$('#su_e').val('');
 				$('#message').show();
 				$('#message').text('Message: Login created. Now please sign in.');
 			}
 		})
+	});
+	var input = document.getElementById("su_e");
+	input.addEventListener("keyup", function(event) {	// Execute a function when the user releases a key on the keyboard
+		if (event.keyCode === 13) {	// Number 13 is the "Enter" key on the keyboard
+			event.preventDefault(); // Cancel the default action, if needed
+			document.getElementById("su_s").click(); // Trigger the button element with a click
+		}
 	});
 	
 	$('#si_s').on('click', function () {
@@ -81,6 +90,8 @@ $(document).ready(function() {
 			},
 			success: function (data) {
 				if (data.status == "success") {
+					$('#si_u').val('');
+					$('#si_p').val('');
 					$('#message').show();
 					$('#message').text('Message: Login successful. Thank you.');
 					$('#currentuser span').text(data.name);
@@ -91,6 +102,13 @@ $(document).ready(function() {
 				}
 			}
 		})
+	});
+	var input = document.getElementById("si_p");
+	input.addEventListener("keyup", function(event) {	// Execute a function when the user releases a key on the keyboard
+		if (event.keyCode === 13) {	// Number 13 is the "Enter" key on the keyboard
+			event.preventDefault(); // Cancel the default action, if needed
+			document.getElementById("si_s").click(); // Trigger the button element with a click
+		}
 	});
 
 	$('#logout').on('click', function () {
@@ -136,5 +154,12 @@ $(document).ready(function() {
 				}
 			}
 		})
+	});
+	var input = document.getElementById("desc");
+	input.addEventListener("keyup", function(event) {	// Execute a function when the user releases a key on the keyboard
+		if (event.keyCode === 13) {	// Number 13 is the "Enter" key on the keyboard
+			event.preventDefault(); // Cancel the default action, if needed
+			document.getElementById("ad_s").click(); // Trigger the button element with a click
+		}
 	});
 })
